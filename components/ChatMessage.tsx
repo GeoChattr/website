@@ -3,9 +3,9 @@ const ChatMessage = ({ self, message }: { self: boolean; message: string }) => {
     <div
       className={`${
         self
-          ? "bg-gradient-to-tr from-purple-500 to-blue-600 self-end"
+          ? "self-end bg-gradient-to-tr from-purple-500 to-blue-600"
           : "bg-gray-700"
-      } px-2 py-2 rounded-lg max-w-[60%] w-fit`}
+      } w-fit max-w-[60%] rounded-lg px-2 py-2`}
     >
       {message}
     </div>
