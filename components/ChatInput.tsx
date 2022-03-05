@@ -1,16 +1,41 @@
 import useSocket from "./SocketContext";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+const randColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 const ChatInput = () => {
   const { socket } = useSocket();
   const canvas = useRef(null);
-  const getCanvas = () => {
-    console.log(canvas.current);
+  const [color, setColor] = useState(randColor());
+  const getCanvas = async () => {
+    console.log(await canvas.current.exportImage("png"));
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColor(randColor());
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
   return (
     //change later
     <>
-      <ReactSketchCanvas ref={canvas} />
+      <ReactSketchCanvas
+        className="aspect-[5/3] max-w-2xl"
+        style={{
+          border: "0",
+        }}
+        canvasColor="#374151"
+        strokeColor={color}
+        ref={canvas}
+      />
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          getCanvas();
+        }}
+      >
+        get canvas
+      </button>
       <form
         className="flex items-center gap-4"
         onSubmit={(e: any) => {
