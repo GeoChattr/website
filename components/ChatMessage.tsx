@@ -7,7 +7,7 @@ const ChatMessage = ({ self, message }: { self: boolean; message: string }) => {
           : "bg-gray-700"
       } w-fit max-w-[60%] rounded-lg px-2 py-2`}
     >
-      <img src={message} />
+      <img alt="chat image" src={message} />
     </div>
   );
 };
