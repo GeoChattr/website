@@ -30,7 +30,7 @@ const ChatPage = () => {
     });
   }, [socket, msgs, setMsgs]);
   return (
-    <main className="py-16 px-8">
+    <div className="py-16 px-8">
       <div className="mx-auto max-w-5xl space-y-4">
         <h1 className="text-4xl font-bold">GeoChattr</h1>
         <div className="flex flex-col gap-1 rounded-md bg-gray-900 py-16 px-8">
@@ -40,7 +40,7 @@ const ChatPage = () => {
           <ChatInput />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
