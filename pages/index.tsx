@@ -3,19 +3,15 @@ import { useEffect } from "react";
 import { io } from "socket.io-client";
 import ChatPage from "../components/ChatPage";
 
-const socket = io("http://localhost:4000");
+const socket: Socket = io("192.168.34.59:4000");
 
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    socket.on("connect", () => {
-      console.log("Bruh moment", socket.id);
-    }); // x8WIv7-mJelg7on_ALbx});
-  }, []);
+  
 
   return (
     <div>
-      <ChatPage />
+      <ChatPage socket={socket} />
     </div>
   );
 };

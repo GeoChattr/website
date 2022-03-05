@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { Socket } from "socket.io-client";
 import ChatInput from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 
-const ChatPage = () => {
+const ChatPage = (socket:Socket) => {
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Bruh moment", socket.id);
+    }); // x8WIv7-mJelg7on_ALbx});
+
+    
+  }, []);
   return (
     <main className="py-16 px-8">
       <div className="mx-auto max-w-5xl space-y-4">
@@ -10,7 +20,7 @@ const ChatPage = () => {
           <ChatMessage self={false} message={"chat message"} />
           <ChatMessage self={true} message={"hmmmm"} />
         </div>
-        <ChatInput />
+        <ChatInput socket={socket}/>
       </div>
     </main>
   );
