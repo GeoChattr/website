@@ -7,7 +7,7 @@ const ChatInput = () => {
       className="flex items-center gap-4"
       onSubmit={(e: any) => {
         e.preventDefault();
-        console.log(e.target.text.value);
+        console.log("hi there")
         socket.emit("message", e.target.text.value);
       }}
     >
