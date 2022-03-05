@@ -87,17 +87,20 @@ const ChatInput = () => {
     //change later
     <>
       <div className="mt-6 flex items-start justify-between gap-4">
-        <ReactSketchCanvas
-          className="aspect-[5/3] max-w-2xl"
-          style={{
-            border: "0",
-          }}
-          canvasColor="#374151"
-          strokeColor={color}
-          strokeWidth={strokeWidth}
-          eraserWidth={strokeWidth}
-          ref={canvas}
-        />
+        <div className="flex-grow">
+          <p className="text-gray-400">Draw your image...</p>
+          <ReactSketchCanvas
+            className="aspect-[5/3] w-full max-w-2xl"
+            style={{
+              border: "0",
+            }}
+            canvasColor="#4b5563"
+            strokeColor={color}
+            strokeWidth={strokeWidth}
+            eraserWidth={strokeWidth}
+            ref={canvas}
+          />
+        </div>
         <div className="flex items-start gap-4">
           <div className="mt-1 grid grid-cols-1 gap-2">
             <button
@@ -177,7 +180,7 @@ const ChatInput = () => {
         </div>
       </div>
       <button
-        className="mt-2 rounded-md bg-gradient-to-r from-blue-600 to-purple-500 px-4 py-1.5 text-lg font-medium"
+        className="mt-2 rounded-md bg-gradient-to-r from-blue-600 to-purple-500 px-4 py-1.5 text-lg font-medium hover:from-blue-700 hover:to-purple-600"
         type="button"
         onClick={async (e) => {
           e.preventDefault();
