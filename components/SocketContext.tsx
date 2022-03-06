@@ -5,7 +5,6 @@ const SocketContext = createContext<{ socket: Socket; setSocket: Function }>({
   socket: null,
   setSocket: () => {},
 });
-
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState<Socket>(null);
   useEffect(() => {
