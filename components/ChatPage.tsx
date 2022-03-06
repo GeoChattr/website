@@ -14,6 +14,7 @@ interface Message {
 const ChatPage = ({ username }: { username: string }) => {
   const { socket } = useSocket();
   const [msgs, setMsgs] = useState<Message[]>([]);
+  const [roomName, setRoomName] = useState<string>("");
   const [inputUser, setInputUser] = useState(username);
   const [saved, setSaved] = useState(true);
   const [savedUser, setSavedUser] = useState(username);
@@ -22,6 +23,10 @@ const ChatPage = ({ username }: { username: string }) => {
     socket.on("connected", () => {
       //react toastify this later
       console.log("Connected");
+    });
+
+    socket.on("locationUpdate", (location) => {
+      setRoomName(location.city);
     });
 
     socket.on("message", (msg) => {
@@ -36,7 +41,7 @@ const ChatPage = ({ username }: { username: string }) => {
         <div className="flex justify-between">
           <div>
             <h1 className="text-4xl font-bold">GeoChattr</h1>
-            <p className="font-mono">Room/Mountain View</p>
+            <p className="font-mono">Room / {roomName}</p>
           </div>
           <div className="flex items-center gap-2">
             Logged in as{" "}
