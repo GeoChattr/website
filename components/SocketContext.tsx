@@ -1,5 +1,7 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
+import { json } from "stream/consumers";
 
 const SocketContext = createContext<{ socket: Socket; setSocket: Function }>({
   socket: null,
@@ -9,8 +11,12 @@ const SocketContext = createContext<{ socket: Socket; setSocket: Function }>({
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState<Socket>(null);
   useEffect(() => {
-    const s = io(process.env.NEXT_PUBLIC_API_URL);
-    setSocket(s);
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/location`).then((res) => {
+      const s = io(process.env.NEXT_PUBLIC_API_URL);
+      console.log(res.data);
+      s.emit("locationRoomUpdate", res.data);
+      setSocket(s);
+    });
   }, []);
   return (
     //@ts-ignore
