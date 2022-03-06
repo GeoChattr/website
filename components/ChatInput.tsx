@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
 type Color = `#${string}`;
+
 const ColorSelect = ({
   color,
   setColor,
