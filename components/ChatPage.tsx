@@ -34,7 +34,10 @@ const ChatPage = ({ username }: { username: string }) => {
     <div className="py-16 px-8">
       <div className="mx-auto max-w-5xl space-y-4">
         <div className="flex justify-between">
-          <h1 className="text-4xl font-bold">GeoChattr</h1>
+          <div>
+            <h1 className="text-4xl font-bold">GeoChattr</h1>
+            <p className="font-mono">Room/Mountain View</p>
+          </div>
           <div className="flex items-center gap-2">
             Logged in as{" "}
             <input
