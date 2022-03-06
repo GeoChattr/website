@@ -1,4 +1,12 @@
+import { useContext } from "react";
+import { User } from "./types/User";
+import { UserContext } from "./UserContext";
+
 const Login = () => {
+  const user = useContext(UserContext) as User
+
+  console.log(user)
+
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <div className="rounded-lg bg-gray-900 px-8 py-6">
