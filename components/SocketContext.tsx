@@ -9,7 +9,7 @@ const SocketContext = createContext<{ socket: Socket; setSocket: Function }>({
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState<Socket>(null);
   useEffect(() => {
-    const s = io(process.env.NEXT_PUBLIC_API_URL);
+    const s = io("https://api.shubham92907.repl.co");
     setSocket(s);
   }, []);
   return (
