@@ -14,7 +14,7 @@ interface Message {
 const ChatPage = ({ username }: { username: string }) => {
   const { socket } = useSocket();
   const [msgs, setMsgs] = useState<Message[]>([]);
-  const [roomName, setRoomName] = useState<string>("");
+  const [roomName, setRoomName] = useState<string>("Mountain View");
   const [inputUser, setInputUser] = useState(username);
   const [saved, setSaved] = useState(true);
   const [savedUser, setSavedUser] = useState(username);
