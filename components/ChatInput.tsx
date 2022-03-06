@@ -74,7 +74,7 @@ const colors: Color[] = [
 
 const strokeWidths = [5, 8, 11];
 
-const ChatInput = () => {
+const ChatInput = ({ username }: { username: string }) => {
   const { socket } = useSocket();
   const canvas = useRef(null);
   const [color, setColor] = useState("#ffffff");
@@ -185,8 +185,10 @@ const ChatInput = () => {
         onClick={async (e) => {
           e.preventDefault();
           const image = await getCanvas();
-          console.log(image);
-          socket.emit("message", image);
+          socket.emit("message", {
+            image,
+            username,
+          });
           canvas.current.resetCanvas();
         }}
       >

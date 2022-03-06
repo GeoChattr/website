@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import { User } from "./types/User";
-import { UserContext } from "./UserContext";
+import { useState } from "react";
 
-const Login = () => {
-  const user = useContext(UserContext) as User
-
-  console.log(user)
-
+const Login = ({ onStart }: { onStart: Function }) => {
+  const [username, setUsername] = useState("");
+  const start = () => {
+    if (!username.length) {
+      return;
+    }
+    localStorage.setItem("username", username);
+    onStart(username);
+  };
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <div className="rounded-lg bg-gray-900 px-8 py-6">
@@ -20,11 +22,26 @@ const Login = () => {
           Chat with people in your area through drawings.
         </p>
         <div className="mt-4 flex w-full flex-col items-stretch gap-y-4">
-          <button className="rounded-md bg-gray-800 py-2 px-2 font-semibold hover:bg-gray-700">
-            Log in with Google
-          </button>
-          <button className="rounded-md bg-gray-800 py-2 px-2 font-semibold hover:bg-gray-700">
-            Log in with GitHub
+          <label>
+            <p className="ml-1 text-gray-400">Username</p>
+            <input
+              className="mt-1 w-full border-gray-700 bg-gray-800 px-2 py-2"
+              type="text"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+          </label>
+          <button
+            disabled={username.length === 0}
+            className="rounded bg-gradient-to-r from-blue-500 to-purple-500 py-1.5 px-2 text-sm font-semibold uppercase hover:from-blue-600 hover:to-purple-600 disabled:saturate-50"
+            onClick={(e) => {
+              e.preventDefault();
+              start();
+            }}
+          >
+            Start Chatting!
           </button>
         </div>
       </div>
