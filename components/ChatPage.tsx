@@ -35,7 +35,7 @@ const ChatPage = ({ username }: { username: string }) => {
       <div className="mx-auto max-w-5xl space-y-4">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">GeoChattr</h1>
-          <p className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             Logged in as{" "}
             <input
               className={`border-b-2 bg-transparent focus-visible:outline-none ${
@@ -61,7 +61,7 @@ const ChatPage = ({ username }: { username: string }) => {
               Save
             </button>
             <div className="h-3 w-3 rounded-full bg-emerald-500" />
-          </p>
+          </div>
         </div>
         <div className="flex flex-col gap-1 rounded-md bg-gray-900 py-16 px-8">
           {msgs.map((msg, i) => {
