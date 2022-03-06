@@ -25,9 +25,10 @@ const ChatPage = ({ username }: { username: string }) => {
       console.log("Connected");
     });
 
-    // socket.on("locationUpdate", (location) => {
-    //   setRoomName(location.city);
-    // });
+    socket.on("locationUpdate", (location) => {
+      console.log(location);
+      setRoomName(location.city);
+    });
 
     socket.on("message", (msg) => {
       console.log(msg);
