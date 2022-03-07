@@ -11,7 +11,7 @@ const SocketContext = createContext<{ socket: Socket; setSocket: Function }>({
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState<Socket>(null);
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/location`).then((res) => {
+    axios.get(`http://ifconfig.me/ip`).then((res) => {
       const s = io(process.env.NEXT_PUBLIC_API_URL);
       console.log(res.data);
       s.emit("locationRoomUpdate", res.data);
